@@ -3,11 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const configurations = require('./configAPP');
 
 const Contact = require('./model/contact.js');
-
-const port = process.env.PORT || 8000;
 
 const app = express();
 
@@ -47,13 +44,4 @@ app.delete('/api/contact/:contactID', (req, res) => {
     res.status(200).send({ message : `${req.params.contactID} DELECTED`});
 });
 
-// Mongoose & Server
-mongoose.connection.openUri('mongodb://localhost:27017/diary', (err, res) => {
-    if(err) throw err
-    console.log('Conexión SATISFACTORIA a la Base de Datos en MongoDB');
-
-    // Server running
-    app.listen(configurations.port, () => {
-        console.log(`${app.get('nameAPI')} running on port ${configurations.port}`);
-    });
-});
+module.exports = app; 
