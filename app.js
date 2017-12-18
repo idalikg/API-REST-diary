@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const configurations = require('./configAPP');
+
 const Contact = require('./model/contact.js');
 
 const port = process.env.PORT || 8000;
@@ -51,7 +53,7 @@ mongoose.connection.openUri('mongodb://localhost:27017/diary', (err, res) => {
     console.log('Conexión SATISFACTORIA a la Base de Datos en MongoDB');
 
     // Server running
-    app.listen(port, () => {
-        console.log(`${app.get('nameAPI')} running on port ${port}`);
+    app.listen(configurations.port, () => {
+        console.log(`${app.get('nameAPI')} running on port ${configurations.port}`);
     });
 });
