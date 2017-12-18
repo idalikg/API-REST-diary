@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express.Router();
 
-const Contact = require('../../model/contact.js');
+const Contact = require('../model/contact.js');
 
 app.get('/contact', (req, res) => {
     // res.status(200).send('Contacts List');
