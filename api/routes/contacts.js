@@ -3,7 +3,7 @@ const app = express.Router();
 
 const Contact = require('../model/contact.js');
 
-app.get('/contact', (req, res) => {
+app.get('/', (req, res) => {
     // res.status(200).send('Contacts List');
 
     Contact.find({}, (err, contactos) => {
@@ -15,19 +15,19 @@ app.get('/contact', (req, res) => {
     });
 });
 
-app.get('/contact/:contactID', (req, res) => {
+app.get('/:contactID', (req, res) => {
     res.status(200).send({ message: `Contact ${req.params.contactID} LOCATED` });
 });
 
-app.post('/contact', (req, res) => {
+app.post('/', (req, res) => {
     res.status(200).send({ message: 'Contact REGISTERED' });
 });
 
-app.put('/contact/:contactID', (req, res) => {
+app.put('/:contactID', (req, res) => {
     res.status(200).send({ message: `${req.params.contactID} UPDATED` });
 });
 
-app.delete('/contact/:contactID', (req, res) => {
+app.delete('/:contactID', (req, res) => {
     res.status(200).send({ message: `${req.params.contactID} DELECTED` });
 });
 
